@@ -27,10 +27,10 @@
 | category_id         | integer    | null: false                    |
 | condition_id        | integer    | null: false                    |
 | shipping_charges_id | integer    | null: false                    |
-| shipping_area_id    | integer    | null: false                    |
+| prefecture_id       | integer    | null: false                    |
 | days_of_ship_id     | integer    | null: false                    |
 | price               | integer    | null: false                    |
-| user_id             | references | null: false, foreign_key: true |
+| user                | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -39,16 +39,16 @@
 
 ## item_purchasesテーブル
 
-| Column              | Type       | Options                        |
-| ------------------- | ---------- | ------------------------------ |
-| user_id             | references | null: false, foreign_key: true |
-| item_id             | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- has-one :buyer_address
+- has_one :buyer_address
 
 ## buyer_addressesテーブル
 
@@ -60,7 +60,7 @@
 | house_number        | string     | null: false                    |
 | building_name       | string     |                                |
 | telephone_number    | string     | null: false                    |
-| item_purchase_id    | references | null: false, foreign_key: true |
+| item_purchase       | references | null: false, foreign_key: true |
 
 
 ### Association
