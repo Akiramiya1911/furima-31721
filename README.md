@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_one: :transaction
+- has_many :item_purchases
 
 ## itemsテーブル
 
@@ -35,10 +35,22 @@
 ### Association
 
 - belongs_to :user
-- has_one :buyer
-- has_one :transaction
+- has_one :item_purchase
 
-## buyersテーブル
+## item_purchasesテーブル
+
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| user_id             | references | null: false, foreign_key: true |
+| item_id             | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has-one :buyer_address
+
+## buyer_addressesテーブル
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
@@ -48,21 +60,9 @@
 | house_number        | string     | null: false                    |
 | building_name       | string     |                                |
 | telephone_number    | string     | null: false                    |
-| item_id             | references | null: false, foreign_key: true |
+| item_purchase_id    | references | null: false, foreign_key: true |
 
 
 ### Association
 
-- belongs_to item
-
-## transactionsテーブル
-
-| Column              | Type       | Options                        |
-| ------------------- | ---------- | ------------------------------ |
-| user_id             | references | null: false, foreign_key: true |
-| item_id             | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to user
-- belongs_to item
+- belongs_to :item_purchase
