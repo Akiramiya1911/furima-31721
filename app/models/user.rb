@@ -15,8 +15,8 @@ class User < ApplicationRecord
   end
 
   with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: "Full-width katakana characters" } do
-    validates :last_name_reading
-    validates :first_name_reading
+    validates :last_name_kana
+    validates :first_name_kana
   end
 
   validates :birth_date, presence: true
