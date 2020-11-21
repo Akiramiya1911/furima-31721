@@ -23,7 +23,7 @@
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | item_name           | string     | null: false                    |
-| explanation         | text       | null: false                    |
+| item_info           | text       | null: false                    |
 | category_id         | integer    | null: false                    |
 | condition_id        | integer    | null: false                    |
 | shipping_charges_id | integer    | null: false                    |
