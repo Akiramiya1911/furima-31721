@@ -26,7 +26,7 @@
 | item_info           | text       | null: false                    |
 | category_id         | integer    | null: false                    |
 | condition_id        | integer    | null: false                    |
-| shipping_charges_id | integer    | null: false                    |
+| shipping_charge_id  | integer    | null: false                    |
 | prefecture_id       | integer    | null: false                    |
 | days_of_ship_id     | integer    | null: false                    |
 | item_price          | integer    | null: false                    |
