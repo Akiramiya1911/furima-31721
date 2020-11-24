@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordExtentions
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
   belongs_to :shipping_charge
@@ -24,5 +24,5 @@ class Item < ApplicationRecord
   end
 
   validates :item_price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
-  
+
 end

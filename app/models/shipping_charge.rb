@@ -5,7 +5,7 @@ class ShippingCharge < ActiveHash::Base
     { id: 2, name: '送料込み(出品者負担)' }
   ]
 
-  include ActiveHash::associations
+  include ActiveHash::Associations
   has_many :items
-  
+
 end
