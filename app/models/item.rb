@@ -15,14 +15,14 @@ class Item < ApplicationRecord
     validates :item_info
   end
 
-  with_options numericality: { other_then: 0 } do
-    validates :category
-    validates :condition
-    validates :shipping_charge
-    validates :prefecture
-    validates :days_of_ship
+  with_options numericality: { other_than: 0, message: "Select" } do
+    validates :category_id
+    validates :condition_id
+    validates :shipping_charge_id
+    validates :prefecture_id
+    validates :days_of_ship_id
   end
 
-  validates :item_price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+  validates :item_price, presence: true, format: { with: /\A[0-9]+\z/, message: "Half-width number" }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "Out of setting range" }
 
 end
