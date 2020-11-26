@@ -15,7 +15,7 @@ class Item < ApplicationRecord
     validates :item_info
   end
 
-  with_options numericality: { other_than: 0, message: 'Select' } do
+  with_options presence: true, numericality: { other_than: 0, message: 'Select' } do
     validates :category_id
     validates :condition_id
     validates :shipping_charge_id
