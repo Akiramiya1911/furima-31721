@@ -3,5 +3,4 @@ class BuyerAddress < ApplicationRecord
   belongs_to :prefecture
 
   belongs_to :item_purchase
-
 end
