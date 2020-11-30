@@ -16,8 +16,10 @@ class OrdersController < ApplicationController
 
   def create
     @buyer_data = BuyerData.new(buyer_data_params)
-    @buyer_data.save
+    binding.pry
     if @buyer_data.valid?
+      pay_item
+      @buyer_data.save
       redirect_to root_path
     else
       render :index
@@ -31,6 +33,15 @@ class OrdersController < ApplicationController
   end
 
   def buyer_data_params
-    params.require(:buyer_data).permit(:card_number, :card_exp_month, :card_exp_year, :card_cvc, :postal_code, :prefecture_id, :city, :house_number, :building_name, :telephone_number).merge(user_id: current_user.id, item_id: @item.id)
+    params.require(:buyer_data).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :telephone_number).merge(token: params[:token],user_id: current_user.id, item_id: @item.id)
+  end
+
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: @item.item_price,
+      card: buyer_data_params[:token],
+      currency: 'jpy'
+    )
   end
 end
