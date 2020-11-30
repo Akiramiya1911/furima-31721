@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
 
   def show
     @user = User.find(@item.user_id)
+    @item_purchase = @item.item_purchase
   end
 
   def edit
