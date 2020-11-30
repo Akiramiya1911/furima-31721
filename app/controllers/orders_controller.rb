@@ -16,7 +16,6 @@ class OrdersController < ApplicationController
 
   def create
     @buyer_data = BuyerData.new(buyer_data_params)
-    binding.pry
     if @buyer_data.valid?
       pay_item
       @buyer_data.save
