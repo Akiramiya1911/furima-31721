@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
     @item_purchase = @item.item_purchase
     if @item_purchase
       redirect_to root_path
-    elsif not user_signed_in?
+    elsif !user_signed_in?
       redirect_to new_user_session_path
     elsif current_user.id == @item.user_id
       redirect_to root_path
@@ -33,11 +33,11 @@ class OrdersController < ApplicationController
   end
 
   def buyer_data_params
-    params.require(:buyer_data).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :telephone_number).merge(token: params[:token],user_id: current_user.id, item_id: @item.id)
+    params.require(:buyer_data).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :telephone_number).merge(token: params[:token], user_id: current_user.id, item_id: @item.id)
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.item_price,
       card: buyer_data_params[:token],

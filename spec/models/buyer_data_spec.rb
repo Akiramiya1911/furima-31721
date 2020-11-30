@@ -30,7 +30,7 @@ RSpec.describe BuyerData, type: :model do
       it 'postal_codeにハイフン(-)がないと保存できないこと' do
         @buyer_data.postal_code = '1234567'
         @buyer_data.valid?
-        expect(@buyer_data.errors.full_messages).to include("Postal code Input correctly")
+        expect(@buyer_data.errors.full_messages).to include('Postal code Input correctly')
       end
       it 'prefenture_idが空だと保存できないこと' do
         @buyer_data.prefecture_id = nil
@@ -40,7 +40,7 @@ RSpec.describe BuyerData, type: :model do
       it 'prefecture_idが0だと保存できないこと' do
         @buyer_data.prefecture_id = 0
         @buyer_data.valid?
-        expect(@buyer_data.errors.full_messages).to include("Prefecture Select")
+        expect(@buyer_data.errors.full_messages).to include('Prefecture Select')
       end
       it 'cityが空だと保存できないこと' do
         @buyer_data.city = nil
@@ -60,12 +60,12 @@ RSpec.describe BuyerData, type: :model do
       it 'telephone_numberにハイフン(-)があると保存できないこと' do
         @buyer_data.telephone_number = '090-0000-0000'
         @buyer_data.valid?
-        expect(@buyer_data.errors.full_messages).to include("Telephone number Input only number")
+        expect(@buyer_data.errors.full_messages).to include('Telephone number Input only number')
       end
       it 'telephone_numberが12桁以上だと保存できないこと' do
         @buyer_data.telephone_number = '090000000000'
         @buyer_data.valid?
-        expect(@buyer_data.errors.full_messages).to include("Telephone number is too long (maximum is 11 characters)")
+        expect(@buyer_data.errors.full_messages).to include('Telephone number is too long (maximum is 11 characters)')
       end
     end
   end
